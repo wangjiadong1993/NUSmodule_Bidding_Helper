@@ -1,0 +1,566 @@
+  [1m[36m (68.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateNusmods (20140807162233)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "nusmods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "code" varchar(255), "description" varchar(255), "workload" varchar(255), "department" varchar(255), "academicyear" varchar(255), "moduletype" varchar(255), "ivle_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140807162233"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateIvles (20140807162752)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "ivles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140807162752"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateLocklinks (20140807163423)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "locklinks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "module_id" integer, "locked_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140807163423"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePreclulinks (20140807163436)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "preclulinks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "module_id" integer, "exlude_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140807163436"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFaculties (20140807163807)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "faculties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140807163807"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateDepartments (20140807163836)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "faculty_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140807163836"]]
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mFaculty Load (0.4ms)[0m  [1mSELECT "faculties".* FROM "faculties"[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT "faculties".* FROM "faculties"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.566057"], ["name", "Arts & Social Sciences"], ["updated_at", "2014-08-07 16:54:02.566057"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.613888"], ["name", "Dentistry"], ["updated_at", "2014-08-07 16:54:02.613888"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.617136"], ["name", "Duke-NUS Graduate Medical School S'pore"], ["updated_at", "2014-08-07 16:54:02.617136"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.619945"], ["name", "Engineering"], ["updated_at", "2014-08-07 16:54:02.619945"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.622713"], ["name", "Joint Multi-Disciplinary Programmes"], ["updated_at", "2014-08-07 16:54:02.622713"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.625788"], ["name", "Law"], ["updated_at", "2014-08-07 16:54:02.625788"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.628533"], ["name", "Lee Kuan Yew School Of Public Policy"], ["updated_at", "2014-08-07 16:54:02.628533"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.631258"], ["name", "NUS Enterprise"], ["updated_at", "2014-08-07 16:54:02.631258"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.633832"], ["name", "NUS Grad Sch For Integrative Sci & Engg"], ["updated_at", "2014-08-07 16:54:02.633832"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.636353"], ["name", "Non-Faculty-Based Departments"], ["updated_at", "2014-08-07 16:54:02.636353"]]
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.639428"], ["name", "Saw Swee Hock School Of Public Health"], ["updated_at", "2014-08-07 16:54:02.639428"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.641982"], ["name", "School Of Business"], ["updated_at", "2014-08-07 16:54:02.641982"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.644614"], ["name", "School Of Computing"], ["updated_at", "2014-08-07 16:54:02.644614"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.647226"], ["name", "School Of Design And Environment"], ["updated_at", "2014-08-07 16:54:02.647226"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.650321"], ["name", "Science"], ["updated_at", "2014-08-07 16:54:02.650321"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.653587"], ["name", "Speciality Research Institutes/Centres"], ["updated_at", "2014-08-07 16:54:02.653587"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.656100"], ["name", "University Administration"], ["updated_at", "2014-08-07 16:54:02.656100"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.658806"], ["name", "University Scholars Programme"], ["updated_at", "2014-08-07 16:54:02.658806"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.662288"], ["name", "Yale-NUS College"], ["updated_at", "2014-08-07 16:54:02.662288"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-08-07 16:54:02.665367"], ["name", "Yong Loo Lin School Of Medicine"], ["updated_at", "2014-08-07 16:54:02.665367"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "faculties" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-08-07 16:54:02.667986"], ["name", "Yong Siew Toh Conservatory Of Music"], ["updated_at", "2014-08-07 16:54:02.667986"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.3ms)[0m  SELECT "faculties".* FROM "faculties"
+  [1m[36mFaculty Load (0.4ms)[0m  [1mSELECT "faculties".* FROM "faculties"[0m
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Arts & Social Sciences' LIMIT 1[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Dentistry' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Duke-NUS Graduate Medical School S''pore' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Engineering' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Joint Multi-Disciplinary Programmes' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Law' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Lee Kuan Yew School Of Public Policy' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'NUS Enterprise' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'NUS Grad Sch For Integrative Sci & Engg' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Non-Faculty-Based Departments' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Saw Swee Hock School Of Public Health' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Business' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Computing' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Design And Environment' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Science' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Speciality Research Institutes/Centres' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'University Administration' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'University Scholars Programme' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yale-NUS College' LIMIT 1[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yong Loo Lin School Of Medicine' LIMIT 1
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yong Siew Toh Conservatory Of Music' LIMIT 1[0m
+  [1m[35mDepartment Load (0.2ms)[0m  SELECT "departments".* FROM "departments"
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Arts & Social Sciences' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.061685"], ["faculty_id", 1], ["name", "Centre For Language Studies"], ["updated_at", "2014-08-07 17:01:42.061685"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.067417"], ["faculty_id", 1], ["name", "Chinese Studies"], ["updated_at", "2014-08-07 17:01:42.067417"]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.077775"], ["faculty_id", 1], ["name", "Communications And New Media"], ["updated_at", "2014-08-07 17:01:42.077775"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.080613"], ["faculty_id", 1], ["name", "Dean's Office (Arts & Social Sc.)"], ["updated_at", "2014-08-07 17:01:42.080613"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.083261"], ["faculty_id", 1], ["name", "Economics"], ["updated_at", "2014-08-07 17:01:42.083261"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.085792"], ["faculty_id", 1], ["name", "English Language & Literature"], ["updated_at", "2014-08-07 17:01:42.085792"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.088384"], ["faculty_id", 1], ["name", "Geography"], ["updated_at", "2014-08-07 17:01:42.088384"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.090930"], ["faculty_id", 1], ["name", "History"], ["updated_at", "2014-08-07 17:01:42.090930"]]
+  [1m[36m (16.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.109412"], ["faculty_id", 1], ["name", "Japanese Studies"], ["updated_at", "2014-08-07 17:01:42.109412"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.112771"], ["faculty_id", 1], ["name", "Malay Studies"], ["updated_at", "2014-08-07 17:01:42.112771"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.115738"], ["faculty_id", 1], ["name", "Philosophy"], ["updated_at", "2014-08-07 17:01:42.115738"]]
+  [1m[35m (15.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.133468"], ["faculty_id", 1], ["name", "Political Science"], ["updated_at", "2014-08-07 17:01:42.133468"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.136860"], ["faculty_id", 1], ["name", "Psychology"], ["updated_at", "2014-08-07 17:01:42.136860"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.139804"], ["faculty_id", 1], ["name", "Social Work"], ["updated_at", "2014-08-07 17:01:42.139804"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.143467"], ["faculty_id", 1], ["name", "Sociology"], ["updated_at", "2014-08-07 17:01:42.143467"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.147010"], ["faculty_id", 1], ["name", "South Asian Studies Programme"], ["updated_at", "2014-08-07 17:01:42.147010"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.150251"], ["faculty_id", 1], ["name", "Southeast Asian Studies"], ["updated_at", "2014-08-07 17:01:42.150251"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Dentistry' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.154181"], ["faculty_id", 2], ["name", "Dentistry"], ["updated_at", "2014-08-07 17:01:42.154181"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.157221"], ["faculty_id", 2], ["name", "Division Of Graduate Dental Studies"], ["updated_at", "2014-08-07 17:01:42.157221"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Duke-NUS Graduate Medical School S''pore' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.160873"], ["faculty_id", 3], ["name", "Duke-NUS Graduate Medical School S'pore"], ["updated_at", "2014-08-07 17:01:42.160873"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Engineering' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.164488"], ["faculty_id", 4], ["name", "Bachelor Of Technology Programme"], ["updated_at", "2014-08-07 17:01:42.164488"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.167369"], ["faculty_id", 4], ["name", "Biomedical Engineering"], ["updated_at", "2014-08-07 17:01:42.167369"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.170572"], ["faculty_id", 4], ["name", "Chemical & Biomolecular Engineering"], ["updated_at", "2014-08-07 17:01:42.170572"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.173258"], ["faculty_id", 4], ["name", "Civil & Environmental Engineering"], ["updated_at", "2014-08-07 17:01:42.173258"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.176037"], ["faculty_id", 4], ["name", "Dean's Office (Engineering)"], ["updated_at", "2014-08-07 17:01:42.176037"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.178963"], ["faculty_id", 4], ["name", "Division Of Engineering And Tech Mgt"], ["updated_at", "2014-08-07 17:01:42.178963"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.182232"], ["faculty_id", 4], ["name", "Electrical & Computer Engineering"], ["updated_at", "2014-08-07 17:01:42.182232"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.185042"], ["faculty_id", 4], ["name", "Engineering Science Programme"], ["updated_at", "2014-08-07 17:01:42.185042"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.188088"], ["faculty_id", 4], ["name", "Industrial & Systems Engineering"], ["updated_at", "2014-08-07 17:01:42.188088"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.191258"], ["faculty_id", 4], ["name", "Materials Science And Engineering"], ["updated_at", "2014-08-07 17:01:42.191258"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.194224"], ["faculty_id", 4], ["name", "Mechanical Engineering"], ["updated_at", "2014-08-07 17:01:42.194224"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Joint Multi-Disciplinary Programmes' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.197898"], ["faculty_id", 5], ["name", "Computing & Engineering"], ["updated_at", "2014-08-07 17:01:42.197898"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Law' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.201521"], ["faculty_id", 6], ["name", "Law"], ["updated_at", "2014-08-07 17:01:42.201521"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Lee Kuan Yew School Of Public Policy' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.205345"], ["faculty_id", 7], ["name", "Lee Kuan Yew School Of Public Policy"], ["updated_at", "2014-08-07 17:01:42.205345"]]
+  [1m[36m (192.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'NUS Enterprise' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.400193"], ["faculty_id", 8], ["name", "NUS Entrepreneurship Centre"], ["updated_at", "2014-08-07 17:01:42.400193"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'NUS Grad Sch For Integrative Sci & Engg' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.405468"], ["faculty_id", 9], ["name", "NUS Grad Sch For Integrative Sci & Engg"], ["updated_at", "2014-08-07 17:01:42.405468"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.1ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Non-Faculty-Based Departments' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.409916"], ["faculty_id", 10], ["name", "College Of Alice & Peter Tan"], ["updated_at", "2014-08-07 17:01:42.409916"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.412926"], ["faculty_id", 10], ["name", "Ctr For English Language Communication"], ["updated_at", "2014-08-07 17:01:42.412926"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.415650"], ["faculty_id", 10], ["name", "Institute Of Systems Science"], ["updated_at", "2014-08-07 17:01:42.415650"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.418375"], ["faculty_id", 10], ["name", "Ridge View Residential College"], ["updated_at", "2014-08-07 17:01:42.418375"]]
+  [1m[35m (3.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.423669"], ["faculty_id", 10], ["name", "Temasek Defence Systems Institute"], ["updated_at", "2014-08-07 17:01:42.423669"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.426983"], ["faculty_id", 10], ["name", "Tembusu College"], ["updated_at", "2014-08-07 17:01:42.426983"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Saw Swee Hock School Of Public Health' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.432063"], ["faculty_id", 11], ["name", "Saw Swee Hock School Of Public Health"], ["updated_at", "2014-08-07 17:01:42.432063"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Business' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.436345"], ["faculty_id", 12], ["name", "Accounting"], ["updated_at", "2014-08-07 17:01:42.436345"]]
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.444235"], ["faculty_id", 12], ["name", "Dean's Office (Biz)"], ["updated_at", "2014-08-07 17:01:42.444235"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.448524"], ["faculty_id", 12], ["name", "Decision Sciences"], ["updated_at", "2014-08-07 17:01:42.448524"]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.452318"], ["faculty_id", 12], ["name", "Finance"], ["updated_at", "2014-08-07 17:01:42.452318"]]
+  [1m[36m (3.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.457828"], ["faculty_id", 12], ["name", "Human Resource Management Unit"], ["updated_at", "2014-08-07 17:01:42.457828"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.461602"], ["faculty_id", 12], ["name", "Management And Organisation"], ["updated_at", "2014-08-07 17:01:42.461602"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.465593"], ["faculty_id", 12], ["name", "Marketing"], ["updated_at", "2014-08-07 17:01:42.465593"]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.473538"], ["faculty_id", 12], ["name", "Strategy And Policy"], ["updated_at", "2014-08-07 17:01:42.473538"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Computing' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.478573"], ["faculty_id", 13], ["name", "Computer Science"], ["updated_at", "2014-08-07 17:01:42.478573"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.481608"], ["faculty_id", 13], ["name", "Dean's Office (School Of Computing)"], ["updated_at", "2014-08-07 17:01:42.481608"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.484408"], ["faculty_id", 13], ["name", "Information Systems"], ["updated_at", "2014-08-07 17:01:42.484408"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'School Of Design And Environment' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.491572"], ["faculty_id", 14], ["name", "Architecture"], ["updated_at", "2014-08-07 17:01:42.491572"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.496350"], ["faculty_id", 14], ["name", "Building"], ["updated_at", "2014-08-07 17:01:42.496350"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.499590"], ["faculty_id", 14], ["name", "Dean's Office (School Of Design & Env)"], ["updated_at", "2014-08-07 17:01:42.499590"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.503434"], ["faculty_id", 14], ["name", "Division Of Industrial Design"], ["updated_at", "2014-08-07 17:01:42.503434"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.507925"], ["faculty_id", 14], ["name", "Real Estate"], ["updated_at", "2014-08-07 17:01:42.507925"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Science' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.520310"], ["faculty_id", 15], ["name", "Biological Sciences"], ["updated_at", "2014-08-07 17:01:42.520310"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.524433"], ["faculty_id", 15], ["name", "Chemistry"], ["updated_at", "2014-08-07 17:01:42.524433"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.530797"], ["faculty_id", 15], ["name", "Dean's Office (Science)"], ["updated_at", "2014-08-07 17:01:42.530797"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.536414"], ["faculty_id", 15], ["name", "Mathematics"], ["updated_at", "2014-08-07 17:01:42.536414"]]
+  [1m[35m (10.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.549117"], ["faculty_id", 15], ["name", "Pharmacy"], ["updated_at", "2014-08-07 17:01:42.549117"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.552488"], ["faculty_id", 15], ["name", "Physics"], ["updated_at", "2014-08-07 17:01:42.552488"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.556028"], ["faculty_id", 15], ["name", "Statistics & Applied Probability"], ["updated_at", "2014-08-07 17:01:42.556028"]]
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Speciality Research Institutes/Centres' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.562804"], ["faculty_id", 16], ["name", "Centre For Quantum Technologies"], ["updated_at", "2014-08-07 17:01:42.562804"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.569959"], ["faculty_id", 16], ["name", "Mechanobiology Institute"], ["updated_at", "2014-08-07 17:01:42.569959"]]
+  [1m[35m (3.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.575402"], ["faculty_id", 16], ["name", "Risk Management Institute"], ["updated_at", "2014-08-07 17:01:42.575402"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.583941"], ["faculty_id", 16], ["name", "The Logistics Institute - Asia Pacific"], ["updated_at", "2014-08-07 17:01:42.583941"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'University Administration' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.588332"], ["faculty_id", 17], ["name", "Office Of Student Affairs"], ["updated_at", "2014-08-07 17:01:42.588332"]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'University Scholars Programme' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.594171"], ["faculty_id", 18], ["name", "University Scholars Programme"], ["updated_at", "2014-08-07 17:01:42.594171"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yale-NUS College' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.599560"], ["faculty_id", 19], ["name", "Yale-NUS College"], ["updated_at", "2014-08-07 17:01:42.599560"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.2ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yong Loo Lin School Of Medicine' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.603773"], ["faculty_id", 20], ["name", "Anatomy"], ["updated_at", "2014-08-07 17:01:42.603773"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.607319"], ["faculty_id", 20], ["name", "Biochemistry"], ["updated_at", "2014-08-07 17:01:42.607319"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.611100"], ["faculty_id", 20], ["name", "Dean's Office (Medicine)"], ["updated_at", "2014-08-07 17:01:42.611100"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.614318"], ["faculty_id", 20], ["name", "Division Of Graduate Medical Studies"], ["updated_at", "2014-08-07 17:01:42.614318"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.617279"], ["faculty_id", 20], ["name", "Microbiology"], ["updated_at", "2014-08-07 17:01:42.617279"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.620760"], ["faculty_id", 20], ["name", "Nursing/Alice Lee Ctr For Nursing Stud"], ["updated_at", "2014-08-07 17:01:42.620760"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.624434"], ["faculty_id", 20], ["name", "Pathology"], ["updated_at", "2014-08-07 17:01:42.624434"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:01:42.627502"], ["faculty_id", 20], ["name", "Pharmacology"], ["updated_at", "2014-08-07 17:01:42.627502"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.630749"], ["faculty_id", 20], ["name", "Physiology"], ["updated_at", "2014-08-07 17:01:42.630749"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mFaculty Load (0.1ms)[0m  [1mSELECT  "faculties".* FROM "faculties"  WHERE "faculties"."name" = 'Yong Siew Toh Conservatory Of Music' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "departments" ("created_at", "faculty_id", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-08-07 17:01:42.634419"], ["faculty_id", 21], ["name", "Yong Siew Toh Conservatory Of Music"], ["updated_at", "2014-08-07 17:01:42.634419"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mDepartment Load (0.8ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDepartment Load (0.3ms)[0m  [1mSELECT "departments".* FROM "departments"  WHERE "departments"."faculty_id" = ?[0m  [["faculty_id", 1]]
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"  WHERE "departments"."faculty_id" = ?[0m  [["faculty_id", 1]]
+  [1m[35mFaculty Load (0.2ms)[0m  SELECT  "faculties".* FROM "faculties"  WHERE "faculties"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"  WHERE "departments"."faculty_id" = ?[0m  [["faculty_id", 2]]
+  [1m[35mFaculty Load (0.3ms)[0m  SELECT  "faculties".* FROM "faculties"   ORDER BY "faculties"."id" DESC LIMIT 1
+  [1m[36mDepartment Load (0.2ms)[0m  [1mSELECT "departments".* FROM "departments"  WHERE "departments"."faculty_id" = ?[0m  [["faculty_id", 21]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeColumnOfNusmod (20140807170435)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TEMPORARY TABLE "anusmods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "code" varchar(255), "description" varchar(255), "workload" varchar(255), "department_id" varchar(255), "academicyear" varchar(255), "moduletype" varchar(255), "ivle_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "nusmods"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "nusmods"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "nusmods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "code" varchar(255), "description" varchar(255), "workload" varchar(255), "department_id" varchar(255), "academicyear" varchar(255), "moduletype" varchar(255), "ivle_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "anusmods"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "anusmods"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "anusmods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "code" varchar(255), "description" varchar(255), "workload" varchar(255), "department_id" varchar(255), "academicyear" varchar(255), "moduletype" varchar(255), "ivle_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "nusmods"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "nusmods"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "nusmods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "code" varchar(255), "description" varchar(255), "workload" varchar(255), "department_id" integer(255), "academicyear" varchar(255), "moduletype" varchar(255), "ivle_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "anusmods"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "anusmods"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140807170435"]]
+  [1m[35m (65.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT "nusmods".* FROM "nusmods"[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "nusmods" ("code", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["code", "EE1002"], ["created_at", "2014-08-07 17:12:24.265256"], ["name", "Circuits"], ["updated_at", "2014-08-07 17:12:24.265256"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."nusmod_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: locklinks.nusmod_id: SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."nusmod_id" = ?
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "locklinks" ("created_at", "locked_id", "module_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-07 17:14:27.055019"], ["locked_id", 2], ["module_id", 1], ["updated_at", "2014-08-07 17:14:27.055019"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.4ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.1ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "nusmods" ("code", "created_at", "name", "updated_at") VALUES (?, ?, ?, ?)  [["code", "EE2024"], ["created_at", "2014-08-07 17:15:47.637482"], ["name", "Computer Interface"], ["updated_at", "2014-08-07 17:15:47.637482"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.3ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[36mFaculty Load (2.2ms)[0m  [1mSELECT "faculties".* FROM "faculties"[0m
+  [1m[35mFaculty Load (0.5ms)[0m  SELECT "faculties".* FROM "faculties"
+  [1m[36mDepartment Load (0.6ms)[0m  [1mSELECT "departments".* FROM "departments"[0m
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.4ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.4ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.4ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.locked_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.4ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.locked_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.3ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locklink_id" = ? LIMIT 1[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.locklink_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locklink_id" = ? LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.4ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.1ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36mLocklink Load (0.4ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.3ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNusmod Load (0.4ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.3ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36mLocklink Load (0.1ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.4ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.locked_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."locked_id" = ? LIMIT 1
+  [1m[36mLocklink Load (0.4ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.4ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.1ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.3ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mNusmod Load (0.4ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.3ms)[0m  [1mSELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."module_id" = ?[0m  [["module_id", 1]]
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mLocklink Load (0.2ms)[0m  [1mSELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1[0m
+  [1m[35mLocklink Load (0.2ms)[0m  SELECT  "locklinks".* FROM "locklinks"   ORDER BY "locklinks"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mLocklink Load (0.4ms)[0m  SELECT "locklinks".* FROM "locklinks"  WHERE "locklinks"."locked_id" = ?  [["locked_id", 2]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "locklinks" ON "nusmods"."id" = "locklinks"."locked_id" WHERE "locklinks"."locked_id" = ?  [["locked_id", 1]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "locklinks" ON "nusmods"."id" = "locklinks"."locked_id" WHERE "locklinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36mNusmod Load (0.1ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" DESC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" DESC LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" DESC LIMIT 1[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "locklinks" ON "nusmods"."id" = "locklinks"."module_id" WHERE "locklinks"."locked_id" = ?  [["locked_id", 2]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mPreclulink Load (0.1ms)[0m  SELECT "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "preclulinks" ("created_at", "exlude_id", "module_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-08-08 04:17:09.184446"], ["exlude_id", 2], ["module_id", 1], ["updated_at", "2014-08-08 04:17:09.184446"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mPreclulink Load (0.1ms)[0m  [1mSELECT "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mPreclulink Load (0.4ms)[0m  [1mSELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.3ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mPreclulink Load (0.2ms)[0m  [1mSELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mNusmod Load (0.3ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mPreclulink Load (0.2ms)[0m  SELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1  [["module_id", 1]]
+  [1m[36mNusmod Load (0.4ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."exclude_id" = ? LIMIT 1[0m  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.exclude_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."exclude_id" = ? LIMIT 1
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mPreclulink Load (0.2ms)[0m  [1mSELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."exlude_id" = ? LIMIT 1  [[nil, 1]]
+SQLite3::SQLException: no such column: nusmods.exlude_id: SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."exlude_id" = ? LIMIT 1
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mPreclulink Load (0.2ms)[0m  SELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1  [["module_id", 1]]
+  [1m[36mNusmod Load (0.4ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1
+  [1m[36mPreclulink Load (0.2ms)[0m  [1mSELECT  "preclulinks".* FROM "preclulinks"  WHERE "preclulinks"."module_id" = ?  ORDER BY "preclulinks"."id" ASC LIMIT 1[0m  [["module_id", 1]]
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT  "nusmods".* FROM "nusmods"  WHERE "nusmods"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" ASC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "preclulinks" ON "nusmods"."id" = "preclulinks"."exlude_id" WHERE "preclulinks"."module_id" = ?  [["module_id", 1]]
+  [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" DESC LIMIT 1[0m
+  [1m[35mNusmod Load (0.2ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "preclulinks" ON "nusmods"."id" = "preclulinks"."exlude_id" WHERE "preclulinks"."module_id" = ?  [["module_id", 2]]

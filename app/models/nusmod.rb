@@ -14,7 +14,7 @@ class Nusmod < ActiveRecord::Base
 
 	belongs_to :department
 
-
+	has_many :modhists
 	def self.modimport
 		ur = URI("http://api.nusmods.com/2014-2015/moduleInformation.json")
 		mods = Net::HTTP.get(ur)
@@ -27,7 +27,7 @@ class Nusmod < ActiveRecord::Base
 			end
 		end
 	end
-	
+
 	def self.import_all
 		Faculty.falimport
 		Department.depimport

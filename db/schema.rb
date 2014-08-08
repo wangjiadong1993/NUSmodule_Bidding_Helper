@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808062502) do
+ActiveRecord::Schema.define(version: 20140808074444) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20140808062502) do
   create_table "locklinks", force: true do |t|
     t.integer  "module_id"
     t.integer  "locked_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "modhists", force: true do |t|
+    t.datetime "examtime"
+    t.integer  "semester"
+    t.integer  "nusmod_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807170435) do
+ActiveRecord::Schema.define(version: 20140808043214) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -49,11 +49,12 @@ ActiveRecord::Schema.define(version: 20140807170435) do
     t.integer  "ivle_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "modulecredit"
   end
 
   create_table "preclulinks", force: true do |t|
     t.integer  "module_id"
-    t.integer  "exlude_id"
+    t.integer  "exclude_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

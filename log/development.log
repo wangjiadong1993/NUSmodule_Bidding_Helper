@@ -564,3 +564,20 @@ SQLite3::SQLException: no such column: nusmods.exlude_id: SELECT  "nusmods".* FR
   [1m[35mNusmod Load (0.2ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "preclulinks" ON "nusmods"."id" = "preclulinks"."exlude_id" WHERE "preclulinks"."module_id" = ?  [["module_id", 1]]
   [1m[36mNusmod Load (0.2ms)[0m  [1mSELECT  "nusmods".* FROM "nusmods"   ORDER BY "nusmods"."id" DESC LIMIT 1[0m
   [1m[35mNusmod Load (0.2ms)[0m  SELECT "nusmods".* FROM "nusmods" INNER JOIN "preclulinks" ON "nusmods"."id" = "preclulinks"."exlude_id" WHERE "preclulinks"."module_id" = ?  [["module_id", 2]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeColumnsInNusmod (20140808043214)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TEMPORARY TABLE "apreclulinks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "module_id" integer, "exclude_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "preclulinks"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "apreclulinks" ("id","module_id","exclude_id","created_at","updated_at") VALUES (1, 1, 2, '2014-08-08 04:17:09.184446', '2014-08-08 04:17:09.184446')[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "preclulinks"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "preclulinks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "module_id" integer, "exclude_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "apreclulinks"
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "preclulinks" ("id","module_id","exclude_id","created_at","updated_at") VALUES (1, 1, 2, '2014-08-08 04:17:09.184446', '2014-08-08 04:17:09.184446')[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "apreclulinks"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "nusmods" ADD "modulecredit" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140808043214"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

@@ -1,7 +1,10 @@
-require 'net/http'
+require 'net/http';
+
 class Department < ActiveRecord::Base
+	
 	belongs_to :faculty
-	has_many :nusmods
+
+	has_many   :nusmods
 
 	def self.depimport
 		ur = URI("http://api.nusmods.com/2014-2015/1/facultyDepartments.json")

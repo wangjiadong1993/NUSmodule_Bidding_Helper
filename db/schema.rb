@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808043214) do
+ActiveRecord::Schema.define(version: 20140808062502) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140808043214) do
     t.string   "code"
     t.string   "description"
     t.string   "workload"
-    t.integer  "department_id", limit: 255
+    t.integer  "department_id"
     t.string   "academicyear"
     t.string   "moduletype"
     t.integer  "ivle_id"

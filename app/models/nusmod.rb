@@ -17,6 +17,8 @@ class Nusmod < ActiveRecord::Base
 	has_many :modhists
 
 	has_many :biddings
+
+	has_many :modtimes
 	def self.modimport
 		ur = URI("http://api.nusmods.com/2014-2015/moduleInformation.json")
 		mods = Net::HTTP.get(ur)

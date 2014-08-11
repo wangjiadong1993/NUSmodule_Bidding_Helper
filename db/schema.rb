@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808103222) do
+ActiveRecord::Schema.define(version: 20140811064856) do
 
   create_table "biddings", force: true do |t|
     t.integer  "academicyear"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 20140808103222) do
     t.datetime "examtime"
     t.integer  "semester"
     t.integer  "nusmod_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "modtimes", force: true do |t|
+    t.integer  "nusmod_id"
+    t.integer  "classnum"
+    t.string   "LessonType"
+    t.integer  "weekcode"
+    t.string   "weektext"
+    t.integer  "daycode"
+    t.string   "daytext"
+    t.integer  "endtime"
+    t.integer  "starttime"
+    t.string   "venue"
+    t.string   "academicyear"
+    t.integer  "semester"
+    t.boolean  "deleflag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

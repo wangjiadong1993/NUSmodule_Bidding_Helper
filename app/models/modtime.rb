@@ -15,4 +15,26 @@ class Modtime < ActiveRecord::Base
 			end
 		end
 	end
+
+	def self.modtimimport2
+		mods = JSON.parse(IO.read("/Users/wangjiadong/Downloads/modules.json"))
+		mods.each do |mod|
+			mod_d = Nusmod.find_by_code(mod['ModuleCode'])
+			if mod_d.nil?
+
+			else
+				mod['History'].each do |obj|
+					if obj['Timetable']!=nil
+						if !obj['Timetable'].empty?
+							obj['Timetable'].each do |time_j|
+								modtime_d = mod_d.modtimes.build(classnum: time_j['ClassNo'], lessontype: time_j['LessonType'],weektext:time_j['WeekText'],daytext:time_j['DayText'],endtime:time_j['EndTime'],starttime:time_j['StartTime'],venue:time_j'Venue'],academicyear:"2014/2015",semester:obj['Semester'],deleflag: nil)
+								modtime_d.save
+							end
+						end
+					end
+				end
+			end
+
+		end
+	end
 end

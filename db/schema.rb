@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811064856) do
+ActiveRecord::Schema.define(version: 20140811073824) do
 
   create_table "biddings", force: true do |t|
     t.integer  "academicyear"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140811064856) do
   create_table "modtimes", force: true do |t|
     t.integer  "nusmod_id"
     t.integer  "classnum"
-    t.string   "LessonType"
+    t.string   "lessontype"
     t.integer  "weekcode"
     t.string   "weektext"
     t.integer  "daycode"

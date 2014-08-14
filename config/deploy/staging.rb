@@ -28,7 +28,7 @@ server '128.199.213.135', user: 'root', roles: %w{web app}
 #    auth_methods: %w(password)
 #  }
  set :ssh_options, {
-   keys: %w(/home/root/.ssh/id_rsa)
+   keys: %w(/Users/wangjiadong/.ssh/id_rsa)
  }
 # and/or per server
 # server 'example.com',

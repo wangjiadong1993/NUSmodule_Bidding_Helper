@@ -9,7 +9,7 @@ role :app, "128.199.213.135"
 role :web, "128.199.213.135"
 role :db,  "128.199.213.135"
 
-set :user, "root"
+server '128.199.213.135', user: 'root', roles: %w{web app}
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server

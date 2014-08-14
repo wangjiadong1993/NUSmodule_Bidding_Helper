@@ -3,7 +3,7 @@ lock '3.1.0'
 
 set :application, 'NUSmodule_Bidding_Helper'
 set :repo_url, 'git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git'
-
+# set :deploy_to, '/home/deploy/apps/NUSmodule_Bidding_Helper'
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -30,7 +30,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
+set :default_env, { path: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" }
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :puma_rackup, -> { File.join(current_path, 'config.ru') }

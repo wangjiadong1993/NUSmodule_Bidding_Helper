@@ -10,6 +10,7 @@ set :repo_url, 'git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git'
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/var/www/NUSmodule_Bidding_Helper'
 
+set :user "deployer"
 # Default value for :scm is :git
 set :scm, :git
 set :branch, 'master'

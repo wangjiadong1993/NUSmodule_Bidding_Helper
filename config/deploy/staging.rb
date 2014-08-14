@@ -26,6 +26,9 @@ role :db,  "128.199.213.135"
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
+ set :ssh_options, {
+   keys: %w(/home/root/.ssh/id_rsa)
+ }
 # and/or per server
 # server 'example.com',
 #   user: 'user_name',

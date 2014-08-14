@@ -22,6 +22,7 @@ server '128.199.213.135', user: 'root', roles: %w{web app}
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
 # set it globally
+set :ssh_options,   :forward_agent => true 
  set :ssh_options, {
    keys: %w(/Users/wangjiadong/.ssh/id_rsa)
  }

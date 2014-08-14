@@ -27,7 +27,7 @@ server '128.199.213.135', user: 'root', roles: %w{web app}
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
-set :ssh_options,   :forward_agent => true 
+set :ssh_options,   {:forward_agent => true }
  set :ssh_options, {
    keys: %w(/Users/wangjiadong/.ssh/id_rsa)
  }

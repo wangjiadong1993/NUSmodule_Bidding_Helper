@@ -1,6 +1,9 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
-
+require 'capistrano/local_precompile'
+require 'capistrano/log_with_awesome'
+require 'capistrano/ext/multistage'
+require "rvm/capistrano"
 set :application, 'NUSmodule_Bidding_Helper'
 set :repo_url, 'git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git'
 # set :deploy_to, '/home/deploy/apps/NUSmodule_Bidding_Helper'
@@ -114,4 +117,4 @@ namespace :rails do
     end
   end
 end
-
+require "rvm/capistrano"

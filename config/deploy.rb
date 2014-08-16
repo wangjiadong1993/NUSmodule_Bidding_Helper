@@ -71,36 +71,46 @@ namespace :deploy do
 end
 
 namespace :rails do
-  desc "Open the rails console on primary app server"
-  task :console do
-    on roles(:app), primary: true do
-      rails_env = fetch(:stage)
-      execute_interactively "#{bundle_cmd} #{current_path}/script/rails console #{rails_env}"
+  desc "Run remote commands"
+  task :run_cmd, :roles => :app do
+    puts "You're about to run stuff on the PRODUCTION server..."
+    puts "Please exercise caution ..."
+    output = STDIN.gets.chomp
+    run_interactively("#{output} RAILS_ENV=#{rails_env}")
+  end
+
+  desc "Open the rails console on one of the remote servers"
+  task :console, :roles => :app do
+    puts "You're about to enter PRODUCTION level console..."
+    puts "Please exercise caution ..."
+    run_interactively "bundle exec rails console #{rails_env}"
+  end
+
+  desc "tail production log files"
+  task :tail_logs, :roles => :app do
+    trap("INT") { puts 'Interupted'; exit 0; }
+    run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
+      puts  # for an extra line break before the host name
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
     end
   end
- 
-  desc "Open the rails dbconsole on primary db server"
-  task :dbconsole do
-    on roles(:db), primary: true do
-      rails_env = fetch(:stage)
-      execute_interactively "#{bundle_cmd} #{current_path}/script/rails dbconsole #{rails_env}"
+  desc "tail printer logs"
+  task :tail_printer_logs, :roles => :app do
+    trap("INT") { puts 'Interupted'; exit 0; }
+    run "tail -f #{shared_path}/log/printer.log" do |channel, stream, data|
+      puts  # for an extra line break before the host name
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
     end
   end
- 
-  def execute_interactively(command)
-    user = fetch(:user)
-    port = fetch(:port) || 22
-    cmd = "ssh -l #{user} #{host} -p #{port} -t 'cd #{deploy_to}/current && #{command}'"
-    info "Connecting to #{host}"
-    exec cmd
-  end
- 
-  def bundle_cmd
-    if fetch(:rbenv_ruby)
-      # FIXME: Is there a better way to do this? How does "execute :bundle" work?
-      "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{File.join(fetch(:rbenv_path), '/bin/rbenv')} exec bundle exec"
-    else
-      "ruby "
+  desc "tail job logs"
+  task :tail_job_logs, :roles => :app do
+    trap("INT") { puts 'Interupted'; exit 0; }
+    run "tail -f #{shared_path}/log/job.log" do |channel, stream, data|
+      puts  # for an extra line break before the host name
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
     end
   end
 end

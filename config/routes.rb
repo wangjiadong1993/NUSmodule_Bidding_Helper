@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get '/modimp/faculty', to: "modimp#faculty"
-  root 'modimp#faculty'
+  get '/modules', to: "modules#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,10 @@
 class Modtime < ActiveRecord::Base
 	belongs_to :Nusmod
+	scope :real, -> { where(deleflag: nil) } 
+	scope :sem2, -> { where(semester: 2 )} 
+	scope :sem1, -> { where(semester: 1)}
+	scope :lesson, ->(lectype) {where("LessonType = ?", lectype)}
+##not using anymore
 
 	def self.modtimimport
 		ur = URI("http://api.nusmods.com/moduleTimetableDeltaRaw.json")
@@ -15,6 +20,7 @@ class Modtime < ActiveRecord::Base
 			end
 		end
 	end
+
 
 	def self.modtimimport2
 		mods = JSON.parse(IO.read("/Users/wangjiadong/Downloads/modules.json"))

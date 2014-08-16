@@ -1,9 +1,5 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
-require 'capistrano/local_precompile'
-require 'capistrano/log_with_awesome'
-require 'capistrano/ext/multistage'
-require "rvm/capistrano"
 set :application, 'NUSmodule_Bidding_Helper'
 set :repo_url, 'git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git'
 # set :deploy_to, '/home/deploy/apps/NUSmodule_Bidding_Helper'
@@ -73,48 +69,3 @@ namespace :deploy do
   end
 end
 
-namespace :rails do
-  desc "Run remote commands"
-  task :run_cmd, :roles => :app do
-    puts "You're about to run stuff on the PRODUCTION server..."
-    puts "Please exercise caution ..."
-    output = STDIN.gets.chomp
-    run_interactively("#{output} RAILS_ENV=#{rails_env}")
-  end
-
-  desc "Open the rails console on one of the remote servers"
-  task :console, :roles => :app do
-    puts "You're about to enter PRODUCTION level console..."
-    puts "Please exercise caution ..."
-    run_interactively "bundle exec rails console #{rails_env}"
-  end
-
-  desc "tail production log files"
-  task :tail_logs, :roles => :app do
-    trap("INT") { puts 'Interupted'; exit 0; }
-    run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
-      puts  # for an extra line break before the host name
-      puts "#{channel[:host]}: #{data}"
-      break if stream == :err
-    end
-  end
-  desc "tail printer logs"
-  task :tail_printer_logs, :roles => :app do
-    trap("INT") { puts 'Interupted'; exit 0; }
-    run "tail -f #{shared_path}/log/printer.log" do |channel, stream, data|
-      puts  # for an extra line break before the host name
-      puts "#{channel[:host]}: #{data}"
-      break if stream == :err
-    end
-  end
-  desc "tail job logs"
-  task :tail_job_logs, :roles => :app do
-    trap("INT") { puts 'Interupted'; exit 0; }
-    run "tail -f #{shared_path}/log/job.log" do |channel, stream, data|
-      puts  # for an extra line break before the host name
-      puts "#{channel[:host]}: #{data}"
-      break if stream == :err
-    end
-  end
-end
-require "rvm/capistrano"

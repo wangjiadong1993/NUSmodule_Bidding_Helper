@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/modules', to: "modules#index"
+  get '/modules/mod_info/:id', to: "modules#mod_info"
+  post 'modules/personal_info', to: "modules#personal_info"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

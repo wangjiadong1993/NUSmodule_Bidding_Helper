@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817042900) do
+ActiveRecord::Schema.define(version: 20140818163934) do
 
   create_table "biddings", force: true do |t|
     t.integer  "academicyear"
@@ -99,7 +99,19 @@ ActiveRecord::Schema.define(version: 20140817042900) do
     t.datetime "updated_at"
   end
 
+  create_table "usermodules", force: true do |t|
+    t.integer  "nusmod_id"
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "startyear"
+    t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

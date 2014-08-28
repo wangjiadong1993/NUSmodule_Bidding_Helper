@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base 
 
 
-	def get_point userid, passwd
+	def self.get_point userid, passwd
 		login_page =nil
 		# agent = Mechanize.new
 		agent = Mechanize.new
@@ -9,7 +9,15 @@ class User < ActiveRecord::Base
 		login_form = login_page.form_with(action: "StudentLogin")
 		login_form.field_with(name: "USERID").value = userid
 		login_form.field_with(name: "PASSWORD").value = passwd
-		page = agent.submit
+		page = login_form.submit
+		page = page.link_with(text: "NUS Point \r\n              Management").click
+		g_point =page.search("tr.tableheader")[1].search("td")[2].content.to_s.scan(/\d+/)[0]
+		form = page.form
+		form.fields[4].value = form.fields[4].options[1]
+		page = form.submit
+		p_point = page.search("tr.tableheader")[1].search("td")[2].content.to_s.scan(/\d+/)[0]
+		arr = [g_point, p_point]
+	
 	end
 
 	def get_modules 

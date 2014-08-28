@@ -4,7 +4,7 @@ class Modtime < ActiveRecord::Base
 	scope :sem2, -> { where(semester: 2 )} 
 	scope :sem1, -> { where(semester: 1)}
 	scope :lesson, ->(lectype) {where("LessonType = ?", lectype)}
-##not using anymore
+	##not using anymore
 
 	def self.modtimimport
 		ur = URI("http://api.nusmods.com/moduleTimetableDeltaRaw.json")
@@ -40,6 +40,21 @@ class Modtime < ActiveRecord::Base
 					end
 				end
 			end
+
+		end
+	end
+	def self.modselect arr
+		if arr.class.to_s != 'Array' 
+			return 
+		end
+
+		len = arr.length
+
+		if len == 1
+			brr = arr[0].modtimes
+		end
+
+		for i in 0..len-1
 
 		end
 	end

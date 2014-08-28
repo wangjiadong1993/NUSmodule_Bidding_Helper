@@ -14,10 +14,10 @@ class ModulesController < ApplicationController
 			response[:error_msg]="Module not found"
 		else
 			response[:status]=1
-			response[:module]=@module
-			response[:department]=@module.department
-			response[:faculty]=@module.department.faculty
-			response[:times]=@module.modtimes
+			response[:module]=@module.as_json(except: [:created_at, :updated_at])
+			response[:department]=@module.department.as_json(except: [:created_at, :updated_at, :faculty_id])
+			response[:faculty]=@module.department.faculty.as_json(except: [:created_at, :updated_at])
+			response[:times]=@module.modtimes.real.sem1.as_json(except: [:nusmod_id, :weekcode, :daycode, :academicyear,:deleflag,:classnum,:id, :created_at, :updated_at])
 			response[:locklinks]=@module.locklinks
 			response[:preclulinks]=@module.preclulinks
 
@@ -27,10 +27,12 @@ class ModulesController < ApplicationController
 	def personal_info
 		response={}
 		http_status = 200
+
 		@username = params[:username]
 		@password = params[:password]
-		doc = Nokogiri::HTML(open("http://www.google.com.sg"))
-		response[:page]=get_point @username, @password
+		temp_arr= User.get_point @username, @password
+		response[:general_point]=temp_arr[0]
+		response[:program_point]=temp_arr[1]
 		render json: response, status: http_status
 	end
 

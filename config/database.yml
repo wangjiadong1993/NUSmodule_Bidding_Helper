@@ -31,4 +31,4 @@ production:
   username: root
   password: Wangjiadong1215
   host:   127.0.0.1
-  database: NUS_development
+  database: NUS_production

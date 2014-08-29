@@ -34,6 +34,5 @@ class User < ActiveRecord::Base
 		doc.xpath('//td[@class="tdcell"]').each {|x| modules << x.text.gsub(/\s+/,"")}
 		modules = modules.slice(20, modules.size-5)
 	end
-	
 
 end

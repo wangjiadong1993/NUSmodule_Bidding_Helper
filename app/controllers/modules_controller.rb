@@ -24,6 +24,24 @@ class ModulesController < ApplicationController
 		end
 		render json: response, status: 200
 	end
+	def code_info
+		response={}
+		@module = Nusmod.find_by_code(params[:id])
+		if @module.nil? || params[:id].nil?
+			response[:status]=0
+			response[:error_msg]="Module not found"
+		else
+			response[:status]=1
+			response[:module]=@module.as_json(except: [:created_at, :updated_at])
+			response[:department]=@module.department.as_json(except: [:created_at, :updated_at, :faculty_id])
+			response[:faculty]=@module.department.faculty.as_json(except: [:created_at, :updated_at])
+			response[:times]=@module.modtimes.real.sem1.as_json(except: [:nusmod_id, :weekcode, :daycode, :academicyear,:deleflag,:classnum,:id, :created_at, :updated_at])
+			response[:locklinks]=@module.locklinks
+			response[:preclulinks]=@module.preclulinks
+
+		end
+		render json: response, status: 200	
+	end
 	def personal_info
 		response={}
 		http_status = 200

@@ -1,1 +1,43 @@
-hello world
+<html ng-app = 'modules'>
+	<head>
+		<title> 
+			Module 
+		</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.js"></script>
+		<script src='/assets/modules.js'></script>
+		<link rel="stylesheet" href="/assets/web.css.scss">	
+
+	</head>
+	<body ng-controller='controller'>
+		<div>
+			<table>
+				<tr>
+					<td>Module Bidding Helper </td>
+					<td> Forum </td>
+					<td> File Sharing </td>
+				</tr>
+
+			</table>
+
+		</div>
+		{{namespace.test}}
+		<div>
+			<input type='text' ng-model="namespace.input"> 
+			<button ng-click='namespace.add_module()'>Confirm</button>
+			<ul ng-repeat="mod in namespace.modules">
+				<li>{{mod.module.name}}</li>
+			</ul>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td>Name</td>
+				</tr>
+			</table>
+
+		</div>
+	</body>
+</html>
+

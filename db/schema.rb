@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821135541) do
+ActiveRecord::Schema.define(version: 20140829075526) do
 
   create_table "biddings", force: true do |t|
     t.integer  "academicyear"
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(version: 20140821135541) do
     t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gpoint"
+    t.integer  "general_point", default: 0
+    t.integer  "program_point", default: 0
   end
 
 end

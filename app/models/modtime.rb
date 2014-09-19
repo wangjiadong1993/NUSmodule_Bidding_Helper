@@ -43,6 +43,7 @@ class Modtime < ActiveRecord::Base
 
 		end
 	end
+
 	def self.modselect arr
 		if arr.class.to_s != 'Array' 
 			return 

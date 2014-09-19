@@ -14,9 +14,9 @@
 		<div>
 			<table>
 				<tr>
-					<td>Module Bidding Helper </td>
-					<td> Forum </td>
-					<td> File Sharing </td>
+					<td><a href="#">Module Bidding Helper</a></td>
+					<td><a href="#"> Forum </a></td>
+					<td><a href="#">File Sharing</a></td>
 				</tr>
 
 			</table>
@@ -26,8 +26,22 @@
 		<div>
 			<input type='text' ng-model="namespace.input"> 
 			<button ng-click='namespace.add_module()'>Confirm</button>
-			<ul ng-repeat="mod in namespace.modules">
-				<li>{{mod.module.name}}</li>
+			<ul >
+				<li ng-repeat="mod in namespace.modules">
+					Name: {{mod.module.name}}  Code: {{mod.module.code}} WorkLoad: {{mod.module.workload}}
+					<ul >Lecture:
+					<li ng-repeat="lec in mod['lectures']">
+						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
+					</li>
+					</ul>
+					<ul >Tutorial:
+					<li ng-repeat="lec in mod['tutorials']">
+						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
+					</li>
+					</ul>
+				</li>
+				
+
 			</ul>
 		</div>
 		<div>

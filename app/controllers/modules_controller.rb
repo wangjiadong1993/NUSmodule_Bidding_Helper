@@ -36,6 +36,14 @@ class ModulesController < ApplicationController
 			response[:department]=@module.department.as_json(except: [:created_at, :updated_at, :faculty_id])
 			response[:faculty]=@module.department.faculty.as_json(except: [:created_at, :updated_at])
 			response[:times]=@module.modtimes.real.sem1.as_json(except: [:nusmod_id, :weekcode, :daycode, :academicyear,:deleflag,:classnum,:id, :created_at, :updated_at])
+			response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+			response[:tutorials] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+			response[:labs] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+			response[:packedlecs] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+			response[:packedtuts] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+########		response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+########		response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
+
 			response[:locklinks]=@module.locklinks
 			response[:preclulinks]=@module.preclulinks
 

@@ -3,7 +3,7 @@ class Modtime < ActiveRecord::Base
 	scope :real, -> { where(deleflag: nil) } 
 	scope :sem2, -> { where(semester: 2 )} 
 	scope :sem1, -> { where(semester: 1)}
-	scope :lesson, ->(lectype) {where("LessonType = ?", lectype)}
+	scope :lesson, ->(lectype) {where("lessontype = ?", lectype)}
 	##not using anymore
 
 	def self.modtimimport

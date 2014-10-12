@@ -47,7 +47,7 @@ class ModulesController < ApplicationController
 					@modtimes_group_group[0] = x.product @modtimes_group_group[0]
 				end
 			end
-			response[:combination] = @modtimes_group_group[0].map{|x| x.flatten; x.map{|y| y.as_json(except: [:created_at, :updated_at, :id, :nusmod_id, :weekcode, :daycode, :academicyear, :deleflag, :semester])}}
+			response[:combination] = @modtimes_group_group[0].map{|x| x.flatten}# x.map{|y| y.as_json(except: [:created_at, :updated_at, :id, :nusmod_id, :weekcode, :daycode, :academicyear, :deleflag, :semester])}}
 			# group_label = []
 			# modtimes.each {|x| group_label[labels.index(x.classnum)].nil? ? group_label[labels.index(x.classnum)]=[x] : group_label[labels.index(x.classnum)]<< x} unless (modtimes.nil? || modtimes.empty?)
 			# response[:groups] = group_label

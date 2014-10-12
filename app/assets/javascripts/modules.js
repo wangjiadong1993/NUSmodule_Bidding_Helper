@@ -3,8 +3,10 @@ app.controller('controller', function($scope, modulegetter) {
 	$scope.namespace = {}
 	$scope.namespace.test = "wangjiadong"
 	$scope.namespace.modules = []
-	$scope.namespace.day_init = [null,null,null,null,null,null,null,null,null,null,null,null,null,null];
-	$scope.namespace.week_init = [$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init]
+	$scope.namespace.solutions = []
+	// $scope.namespace.day_init = [0,0,0,0,null,null,null,null,null,null,null,null,null,null];
+	// $scope.namespace.week_init = [$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init]
+	
 	$scope.namespace.add_module = function() {
 		modulegetter.coder($scope.namespace.input).success(function(data){
 			console.log(data)
@@ -28,10 +30,29 @@ app.controller('controller', function($scope, modulegetter) {
 				}
 			}
 			return 1;
+		}
+	}
+
+	$scope.namespace.recurse = function(id){
+		if(id == 0){
+
+		}else{
+			var solutions = []
+			 solutions = $scope.namespace.recurse(id-1)
+			if(solutions.length >=1){
+					for(i= 0 ; i < solutions.length; i++){
+
+					}
+			} else {
+				
+			}
 
 		}
-
 	}
+
+
+
+
 })
 app.factory('modulegetter', function($http) {
 	return {

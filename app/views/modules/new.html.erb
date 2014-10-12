@@ -1,0 +1,16 @@
+<!-- hello world -->
+<%=simple_form_for @mod  do |f|%>
+<%=f.input :code%>
+<%=f.input :department_id%>
+<%=f.submit "Hello world"%>
+<%end%>
+<button onclick="clicked()">show</button>
+<script>
+	function clicked(){
+		console.log("clicked")
+		// console.log(@mod)
+		console.log($("#nusmod_code").val())
+		console.log($("#nusmod_department_id"))
+		console.log($("input").length)
+	}
+</script>

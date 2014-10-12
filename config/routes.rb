@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post 'modules/personal_info', to: "modules#personal_info"
   get '/web/modules', to: 'web#modules'
   get '/modules/code_info/:id', to: 'modules#code_info'
+  post "modules" => "modules#create", as: :nusmods
+  get 'modules/new', to: "modules#new"
+  # resources :modules
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,9 +5,9 @@
 		</title>
 		<%= javascript_include_tag "application" %>
 		<%= stylesheet_link_tag "application" %>
-		<script src="/assets/angular.min.js"></script>
-		<script src="/assets/angular.js"></script>
-		<script src='/assets/modules.js'></script>
+		<!-- // <script src="/assets/angular.min.js"></script> -->
+		<!-- // <script src="/assets/angular.js"></script> -->
+		<!-- // <script src='/assets/modules.js'></script> -->
 		<link rel="stylesheet" href="/assets/web.css.scss">	
 
 	</head>
@@ -30,7 +30,7 @@
 			<ul >
 				<li ng-repeat="mod in namespace.modules">
 					Name: {{mod.module.name}}  Code: {{mod.module.code}} WorkLoad: {{mod.module.workload}}
-					<ul >Lecture:
+					<!-- <ul >Lecture:
 					<li ng-repeat="lec in mod['lectures']">
 						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
 					</li>
@@ -39,10 +39,21 @@
 					<li ng-repeat="lec in mod['tutorials']">
 						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
 					</li>
-					</ul>
+					</ul> -->
 				</li>
 				
 
+			</ul>
+			<button ng-click="namespace.click_cal()">To Find</button>
+			the total num of solutions are: {{namespace.solutions.length}}
+			<ul>
+				<li ng-repeat="record in namespace.solutions">
+					<ul>
+						<li ng-repeat="detail in record">
+							{{detail['nusmod_id']}} {{detail['lessontype']}}{{detail['daytext']}} {{detail['starttime']}} {{detail['endtime']}}
+						</li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<div>

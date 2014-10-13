@@ -4,6 +4,8 @@ app.controller('controller', function($scope, modulegetter) {
 	$scope.namespace.test = "wangjiadong"
 	$scope.namespace.modules = [] //all the modules
 	$scope.namespace.solutions = []
+	$scope.namespace.time_filter = []
+	$scope.namespace.lesson_filter = []
 	$scope.namespace.one_solution =[]
 	// $scope.namespace.day_init = [0,0,0,0,null,null,null,null,null,null,null,null,null,null];
 	// $scope.namespace.week_init = [$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init,$scope.namespace.day_init]
@@ -18,6 +20,26 @@ app.controller('controller', function($scope, modulegetter) {
 		}).error(function(){
 
 		})
+	}
+	$scope.namespace.time_filter_generate = function (){
+		// console.log("hello")
+		var temp ={}
+		temp['daycode'] = "Wed";
+		temp['comparison'] = "Earlier Than";
+		temp['timecode_1'] = 8;
+		temp['timecode_2'] = null;
+		$scope.namespace.time_filter.push(temp)
+
+	}
+	$scope.namespace.lesson_filter_generate = function (){
+		// console.log("hello")
+		var temp ={}
+		temp['daycode'] = "Wed";
+		temp['comparison'] = "Earlier Than";
+		temp['timecode_1'] = 8;
+		temp['timecode_2'] = null;
+		$scope.namespace.lesson_filter.push(temp)
+
 	}
 	$scope.namespace.repeatcheck = function(code) {
 		len = $scope.namespace.modules.length;
@@ -69,13 +91,9 @@ app.controller('controller', function($scope, modulegetter) {
 						if (tmp != null){
 							solutions.push(tmp)
 						}
-						// return solutions
 					}
-					// return solutions
 				}
 				console.log("out iteration")
-				// console.log(modules_copy)
-				// $scope.namespace.modules = modules_copy
 				return solutions
 			}
 		}

@@ -30,19 +30,24 @@
 			<ul >
 				<li ng-repeat="mod in namespace.modules">
 					Name: {{mod.module.name}}  Code: {{mod.module.code}} WorkLoad: {{mod.module.workload}}
-					<!-- <ul >Lecture:
-					<li ng-repeat="lec in mod['lectures']">
-						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
-					</li>
-					</ul>
-					<ul >Tutorial:
-					<li ng-repeat="lec in mod['tutorials']">
-						{{lec['daytext']}} {{lec['starttime']}} {{lect['endtime']}} {{lec['venue']}} {{lec['weektext']}} {{lec['classnum']}}
-					</li>
-					</ul> -->
 				</li>
-				
 
+			</ul>
+			<button ng-click="namespace.time_filter_generate()">Time Base Filter</button>
+			<ul>
+				<li ng-repeat="one in namespace.time_filter">
+					<input ng-model = "one['daycode']">
+					<input ng-model = "one['comparison']">
+					<input ng-model = "one['timecode_1']">
+				</li>
+			</ul>
+			<button ng-click="namespace.lesson_filter_generate()">Lesson Base Filter</button>
+			<ul>
+				<li ng-repeat="one in namespace.lesson_filter">
+					<input ng-model = "one['daycode']">
+					<input ng-model = "one['comparison']">
+					<input ng-model = "one['timecode_1']">
+				</li>
 			</ul>
 			<button ng-click="namespace.click_cal()">To Find</button>
 			the total num of solutions are: {{namespace.solutions.length}}

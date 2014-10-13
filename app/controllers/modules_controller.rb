@@ -41,9 +41,7 @@ class ModulesController < ApplicationController
 			response[:module]=@module.as_json(except: [:created_at, :updated_at])
 			response[:department]=@module.department.as_json(except: [:created_at, :updated_at, :faculty_id])
 			response[:faculty]=@module.department.faculty.as_json(except: [:created_at, :updated_at])
-			# response[:times]=@module.modtimes.real.sem1.as_json(except: [:nusmod_id, :weekcode, :daycode, :academicyear,:deleflag,:id, :created_at, :updated_at])
-			# @modtimes = @module.modtimes.real.sem1
-			# labels = @modtimes.map(&:classnum).uniq
+
 			@modtimes_group = @modtimes.group_by(&:classnum)
 			@modtimes_group_group = @modtimes_group.values.group_by{|x| x.first.lessontype}.values #unless @modtimes_group.values.nil?
 			@modtimes_group_group.each do |x|
@@ -53,17 +51,6 @@ class ModulesController < ApplicationController
 			end
 			response[:combination] = @modtimes_group_group[0].map{|x| x.flatten} #unless @modtimes_group_group[0].nil?# x.map{|y| y.as_json(except: [:created_at, :updated_at, :id, :nusmod_id, :weekcode, :daycode, :academicyear, :deleflag, :semester])}}
 
-			# end
-			# response[:combination] = brr
-			 # times.group_by(&:lessontype).values.map {|y| y.map(&:classnum).uniq}
-						# response[:group] = seperate response[:times]
-			# response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-			# response[:tutorials] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-			# response[:labs] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-			# response[:packedlecs] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-			# response[:packedtuts] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-########		response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
-########		response[:lectures] = @module.modtimes.real.sem1.where(lessontype: "Lecture")
 
 			response[:locklinks]=@module.locklinks
 			response[:preclulinks]=@module.preclulinks

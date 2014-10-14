@@ -15,9 +15,9 @@
 		<div>
 			<table>
 				<tr>
-					<td><a href="#">Module Bidding Helper</a></td>
-					<td><a href="#"> Forum </a></td>
-					<td><a href="#">File Sharing</a></td>
+					<td><a href="">Module Bidding Helper</a></td>
+					<td><a href=""> Forum </a></td>
+					<td><a href="">File Sharing</a></td>
 				</tr>
 
 			</table>
@@ -36,9 +36,10 @@
 			<button ng-click="namespace.time_filter_generate()">Time Base Filter</button>
 			<ul>
 				<li ng-repeat="one in namespace.time_filter">
-					<input ng-model = "one['daycode']">
-					<input ng-model = "one['comparison']">
-					<input ng-model = "one['timecode_1']">
+					<select ng-model = "one['daycode']" ng-options="one for one in namespace.week_code_const"></select>
+					<select ng-model = "one['comparison']" ng-options="one for one in namespace.time_comp_const"></select>
+					<select ng-model = "one['timecode_1']" ng-options="one for one in namespace.time_code_const"></select>
+					<select ng-model = "one['timecode_2']" ng-if="one['comparison']=='No Between' || one['comparison']=='Between'" ng-options="one for one in namespace.time_code_const"></select>
 				</li>
 			</ul>
 			<button ng-click="namespace.lesson_filter_generate()">Lesson Base Filter</button>

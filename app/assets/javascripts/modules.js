@@ -1,7 +1,10 @@
 var app = angular.module('modules', []);
-app.controller('controller', function($scope, modulegetter) {
+app.controller('controller', function($scope, modulegetter, bidgetter) {
 	$scope.namespace = {}
 	$scope.namespace.test = "wangjiadong"
+	$scope.namespace.time_comp_const = ["Earlier Than", "Later Than", "No Between", "Between"]
+	$scope.namespace.week_code_const = ["All","Mon", "Tue", "Wed", "Thu", "Fri"]
+	$scope.namespace.time_code_const = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
 	$scope.namespace.modules = [] //all the modules
 	$scope.namespace.solutions = []
 	$scope.namespace.time_filter = []
@@ -27,7 +30,7 @@ app.controller('controller', function($scope, modulegetter) {
 		temp['daycode'] = "Wed";
 		temp['comparison'] = "Earlier Than";
 		temp['timecode_1'] = 8;
-		temp['timecode_2'] = null;
+		temp['timecode_2'] = 8;
 		$scope.namespace.time_filter.push(temp)
 
 	}
@@ -56,6 +59,16 @@ app.controller('controller', function($scope, modulegetter) {
 	}
 
 	$scope.namespace.click_cal = function() {
+		bidgetter.coder($scope.namespace.input).success(function(data){
+			console.log(data)
+			// if(data.status == 1 && $scope.namespace.repeatcheck(data.module.code)){
+				// $scope.namespace.modules.push(data)
+				// arrange(0, $scope.namespace.week_init)
+				// console.log($scope.namespace.modules)
+			// }
+		}).error(function(){
+
+		})
 		if( $scope.namespace.modules.length != 0  && $scope.namespace.modules.length < 10){
 			// console.log("already in the click_cal method")
 			// var copy = $scope.namespace.modules
@@ -142,3 +155,13 @@ app.factory('modulegetter', function($http) {
 	}
 })
 
+app.factory('bidgetter', function($http) {
+	return {
+		getter: function(objid){
+				return $http.get('/modules/mod_info/'+objid)
+			},
+	coder: function(objcode){
+		       return $http.get('/bid/show_code/'+objcode)
+	       }
+	}
+})

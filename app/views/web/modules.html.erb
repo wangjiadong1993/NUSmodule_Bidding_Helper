@@ -45,14 +45,14 @@
 			<button ng-click="namespace.lesson_filter_generate()">Lesson Base Filter</button>
 			<ul>
 				<li ng-repeat="one in namespace.lesson_filter">
-					<input ng-model = "one['daycode']">
-					<input ng-model = "one['comparison']">
-					<input ng-model = "one['timecode_1']">
+					<select ng-model = "one['modulecode'] " ng-options="one.module['code'] for one in namespace.modules"></select>
+					<select ng-model = "one['timeslot']" ng-options="one[''] for one in namespace.modules"></select>
+					<!-- <input ng-model = "one['timecode_1']"> -->
 				</li>
 			</ul>
 			<button ng-click="namespace.click_cal()">To Find</button>
 			the total num of solutions are: {{namespace.solutions.length}}
-			<ul>
+			<!-- <ul>
 				<li ng-repeat="record in namespace.solutions">
 					<ul>
 						<li ng-repeat="detail in record">
@@ -60,12 +60,40 @@
 						</li>
 					</ul>
 				</li>
-			</ul>
+			</ul> -->
+			<table>
+				<thead>
+					<td>
+						
+					</td>
+					<td>
+						Mon
+					</td>
+					<td>
+						Tue
+					</td>
+					<td>
+						Wed
+					</td>
+					<td>
+						Thu
+					</td>
+					<td>
+						Fri
+					</td>
+				</thead>
+				<tbody>
+					<tr ng-repeat="one in namespace.time_code_const">
+						<td>{{one}}</td>
+						<td ng-repeat="one in [1,2,3,4,5]"><button ></button></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div>
 			<table>
 				<tr>
-					<td>Name</td>
+					<!-- <td>Name</td> -->
 				</tr>
 			</table>
 

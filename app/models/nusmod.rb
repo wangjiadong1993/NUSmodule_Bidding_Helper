@@ -1,6 +1,6 @@
 require 'net/http'
 class Nusmod < ActiveRecord::Base
-
+	include Elasticsearch::Model
 	has_many :locklinks, foreign_key: :module_id
 	has_many :prelinks, class_name: "Locklink", foreign_key: :locked_id
 
@@ -19,6 +19,16 @@ class Nusmod < ActiveRecord::Base
 	has_many :biddings
 
 	has_many :modtimes
+
+	mappings do 
+		indexes :name, type: "string", index: "not_analyzed"
+		indexes :code, type: "string", index: "not_analyzed"
+	end
+
+
+
+
+
 	def self.modimport
 		ur = URI("http://api.nusmods.com/2014-2015/moduleInformation.json")
 		mods = Net::HTTP.get(ur)
@@ -31,6 +41,17 @@ class Nusmod < ActiveRecord::Base
 			end
 		end
 	end
+
+	def self.fast key_word
+		response = Nusmod.search  key_word
+		response = response.results.map{|x| x.name}.to_a
+	end
+
+
+
+
+
+
 
 	def self.import_all
 		Faculty.falimport

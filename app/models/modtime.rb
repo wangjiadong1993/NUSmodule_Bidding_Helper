@@ -1,5 +1,5 @@
 class Modtime < ActiveRecord::Base
-	belongs_to :Nusmod
+	belongs_to :nusmod
 	scope :real, -> { where(deleflag: nil) } 
 	scope :sem2, -> { where(semester: 2 )} 
 	scope :sem1, -> { where(semester: 1)}

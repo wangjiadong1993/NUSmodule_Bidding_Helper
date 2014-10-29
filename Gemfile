@@ -34,6 +34,10 @@ gem 'mechanize', '~> 2.7.2'
 gem 'nokogiri', '~> 1.6.2'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'elasticsearch'
+gem 'elasticsearch-ruby'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

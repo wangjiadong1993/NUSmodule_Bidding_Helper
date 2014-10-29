@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/modules', to: "modules#index"
   get '/modules/mod_info/:id', to: "modules#mod_info"
   post 'modules/personal_info', to: "modules#personal_info"
+  get 'modules/fast_search/:key_word', to: "modules#fast_search"
   get '/web/modules', to: 'web#modules'
   get '/modules/code_info/:id', to: 'modules#code_info'
   post "modules" => "modules#create", as: :nusmods

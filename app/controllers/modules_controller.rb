@@ -41,22 +41,58 @@ class ModulesController < ApplicationController
 			response[:module]=@module.as_json(except: [:created_at, :updated_at])
 			response[:department]=@module.department.as_json(except: [:created_at, :updated_at, :faculty_id])
 			response[:faculty]=@module.department.faculty.as_json(except: [:created_at, :updated_at])
-
+			# @modtimes.group_by(&:lessontype).values.each do |x|
+			# 	if x.count >1 
+			# 		x.each do |y|
+			# 			x[0...x.index(y)].each do |z|
+			# 				if y.starttime == z.starttime && y.daycode == z.daycode
+			# 					@modtimes.delete(y)
+			# 				end
+			# 			end
+			# 		end
+			# 	end
+			# end
+			# response[:count] = @modtimes.count
+			# @modtimes.group_by(&:lessontype)
 			@modtimes_group = @modtimes.group_by(&:classnum)
 			@modtimes_group_group = @modtimes_group.values.group_by{|x| x.first.lessontype}.values #unless @modtimes_group.values.nil?
+			# response[:group_class] = @modtimes_group
+			# response[:group_group_prev] = @modtimes_group_group.map{|x| x.map {|y| y.count}.inject(:+)}.inject(:+)
+			# @modtimes_group_group.each do |z|
+			# 	if  z.length > 1
+			# 		if z.first.size ==1
+			# 			z.each do |y|
+			# 				z[(0...z.index(y))].each do |x|
+			# 					if y[0].starttime == x[0].starttime && y[0].daytext == x[0].daytext
+			# 						z.delete y
+			# 					end
+			# 				end
+			# 			end
+			# 		end
+			# 	end
+			# end
+			# response[:group_group_later] = @modtimes_group_group.map{|x| x.map {|y| y.count}.inject(:+)}.inject(:+)
 			@modtimes_group_group.each do |x|
 				if x !=  @modtimes_group_group[0]
 					@modtimes_group_group[0] = x.product @modtimes_group_group[0]
 				end
 			end
 			response[:combination] = @modtimes_group_group[0].map{|x| x.flatten} #unless @modtimes_group_group[0].nil?# x.map{|y| y.as_json(except: [:created_at, :updated_at, :id, :nusmod_id, :weekcode, :daycode, :academicyear, :deleflag, :semester])}}
-
-
-			response[:locklinks]=@module.locklinks
-			response[:preclulinks]=@module.preclulinks
+			# response[:locklinks]=@module.locklinks
+			# response[:preclulinks]=@module.preclulinks
 
 		end
 		render json: response, status: 200	
+	end
+	def fast_search
+		response = {}
+		http_status = 200
+
+		response[:chcoices] = Nusmod.fast params[:key_word]
+		
+
+		render json: response, status: 200
+		
 	end
 	def personal_info
 		response={}

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post "modules" => "modules#create", as: :nusmods
   get 'modules/new', to: "modules#new"
   get 'bid/show_code/:code', to: "bid#show_code"
+  resources :locations
+  get 'locations/latest', to: "locations#latest"
   # resources :modules
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

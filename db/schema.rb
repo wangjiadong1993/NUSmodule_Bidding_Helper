@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918094432) do
+ActiveRecord::Schema.define(version: 20150301052514) do
 
   create_table "biddings", force: true do |t|
     t.integer  "academicyear"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20140918094432) do
   end
 
   create_table "ivles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

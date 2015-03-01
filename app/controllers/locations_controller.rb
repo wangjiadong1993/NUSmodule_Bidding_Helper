@@ -13,8 +13,8 @@ class LocationsController < ApplicationController
 
 	def create
 		@location  = Location.new
-		@lat = param[:latitude]
-		@lon = param[:longitude]
+		@lat = params[:latitude]
+		@lon = params[:longitude]
 		@location.latitude = @lat
 		@location.longitude = @lon
 		response = {}
@@ -35,11 +35,11 @@ class LocationsController < ApplicationController
 	def delete
 	end
 
-	def latest
-		@location = Location.last
-		respoinse = {}
+	def new
+		@location = Location.all.last
+		response = {}
 		response[:status] = 1
-		response{:location} = @location
+		response[:location] = @location
 		render json: response, status:200
 	end
 end

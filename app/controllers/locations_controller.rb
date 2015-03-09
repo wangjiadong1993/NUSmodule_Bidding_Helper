@@ -41,5 +41,23 @@ class LocationsController < ApplicationController
 		response[:status] = 1
 		response[:location] = @location
 		render json: response, status:200
+	end	
+	def post_new
+		@location  = Location.new
+		@lat = params[:latitude]
+		@lon = params[:longitude]
+		@location.latitude = @lat
+		@location.longitude = @lon
+		response = {}
+		response[:status] = 1
+		if(!@lat.nil? && !@lon.nil? && @location.save)
+			response[:location] = @location
+		else
+			response[:status] = 0
+			response[:location] = nil
+		end
+		render json: response, status: 200
 	end
+
+
 end

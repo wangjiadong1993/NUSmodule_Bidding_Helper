@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'modules/new', to: "modules#new"
   get 'bid/show_code/:code', to: "bid#show_code"
   resources :locations,except: [:show]
+  get "locations/post_new", to: "locations#post_new"
 #  get '/locations/new', to: "locations#latest"
   # resources :modules
   # The priority is based upon order of creation: first created -> highest priority.

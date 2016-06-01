@@ -5,11 +5,11 @@ set :repo_url, 'git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git'
 # set :deploy_to, '/home/deploy/apps/NUSmodule_Bidding_Helper'
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-
+#git@github.com:wangjiadong1993/NUSmodule_Bidding_Helper.git
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/NUSmodule_Bidding_Helper'
+set :deploy_to, '/var/www/NUSmodule'
 
-set :user, "root"
+set :user, "jiadong"
 # Default value for :scm is :git
 set :scm, :git
 set :branch, 'master'

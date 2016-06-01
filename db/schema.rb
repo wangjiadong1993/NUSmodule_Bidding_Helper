@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 20150301052514) do
     t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "gpoint"
     t.integer  "general_point", default: 0
     t.integer  "program_point", default: 0
   end
